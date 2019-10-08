@@ -1,0 +1,11 @@
+#wrap{
+	border: 2px,solid,red;
+	width: 25%;
+	height: 20%;
+	margin-left: 40%;
+};
+p{
+	text-align: center;
+	margin-top: 3px;
+	color: red;
+}

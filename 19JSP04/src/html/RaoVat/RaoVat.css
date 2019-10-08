@@ -1,0 +1,49 @@
+ul{
+	padding:5px 20px ;
+}
+li{
+	display: inline;
+}
+.menu{
+	height: 30px;
+	background-color: #b3c788;
+}
+a{
+	text-decoration: none;
+}
+.color{
+	height: 100px;
+	background-color: #eccab1;
+}
+section{
+	float: left;
+	width: 65%;
+	height: 275px;
+	background-color: red;
+}
+aside{
+	float: right;
+	width: 32%;
+	height: 275px;
+	background-color: yellow;
+}
+.top{
+	font-size: 20px;
+	text-align: center;
+	margin-top: 275px;
+	height: 30px;
+	background-color: #b4e886;
+}
+.bottom{
+	height: 140px;
+	background-color: #7ca45b;
+}
+.info{
+	width: 20%;
+	height: 140px;
+	float: left;
+	margin-left: 20px;
+}
+.content{
+	margin-top: -15px;
+}
