@@ -8,7 +8,7 @@ public class ConnectionUtils {
 	public static  Connection getMyConnection () throws SQLException, ClassNotFoundException
 	{
 		String hostName = "localhost";
-		String dbName = "students";
+		String dbName = "students_management";
 		String user = "root";
 		String password = "2503";
 		String connectionURL = "jdbc:mysql://"+hostName + ":3306/"+dbName;
