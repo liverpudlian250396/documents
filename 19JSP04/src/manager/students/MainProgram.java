@@ -3,6 +3,7 @@ package manager.students;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MainProgram {
@@ -58,6 +59,14 @@ public class MainProgram {
 				}
 				break;
 			case 5:
+				//find class with class name
+				System.out.println("Please enter the class name of class you want to find: ");
+				Scanner iClassName = new Scanner(System.in);
+				String className = iClassName.nextLine();
+				for (Class listClass : stDaoImpl.findClass(className, conn)) {
+					System.out.println(listClass.getId()+" "+listClass.getClassName());
+				}
+			case 6:
 				break;
 			default:
 				System.out.println("your input number is wrong, please input again!");
@@ -65,7 +74,7 @@ public class MainProgram {
 				break;
 			}
 
-		} while (inputNumber != 5);
+		} while (inputNumber != 6);
 	}
 	private static Students inputStudent()
 	{

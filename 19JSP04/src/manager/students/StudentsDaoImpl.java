@@ -2,6 +2,9 @@ package manager.students;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentsDaoImpl implements IStudentsManagementDao{
@@ -117,6 +120,28 @@ public class StudentsDaoImpl implements IStudentsManagementDao{
 	public List<Students> findStudent(Students student, Connection conn) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Class> findClass(String name, Connection conn) throws SQLException {
+		// TODO Auto-generated method stub
+		List<Class> listClass = new ArrayList<Class>();
+		System.out.println("--------Find information of class with class name------------");
+		String sql = "SELECT class.id, class.class_name FROM students_management.class where "
+				+ "CLASS_NAME LIKE ("+"'"+"%?%'"+");";
+		//String sql = "SELECT class.id, class.class_name FROM students_management.class where "
+			//	+ "CLASS_NAME LIKE ('%tich%');";
+		PreparedStatement pStatement = conn.prepareStatement(sql);
+		pStatement.setString(1,name);
+		ResultSet resultSet = pStatement.executeQuery();
+		while(resultSet.next())
+		{
+			int id = resultSet.getInt("id");
+			String className = resultSet.getString("class_name");
+			Class _class = new Class(id,className);
+			listClass.add(_class);
+		}	
+		return listClass;
 	}
 
 }
