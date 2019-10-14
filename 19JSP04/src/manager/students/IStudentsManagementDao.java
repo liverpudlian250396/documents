@@ -17,6 +17,7 @@ public interface IStudentsManagementDao {
 	//tim kiem thong tin lop hoc theo ten
 	List<Class> findClass (String name, Connection conn) throws SQLException;
 	//tim kiem thong tin sinh vien theo id, name, age
-	public List<Students> findStudent(Students student, Connection conn);
+	public List<StudentsInfomationFound> findStudent(Students student, Connection conn);
+	List<StudentsInfomationFound> findStudent(StudentsInfomationFound students, Connection conn) throws SQLException;
 	
 }

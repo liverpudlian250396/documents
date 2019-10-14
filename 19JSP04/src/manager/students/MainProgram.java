@@ -67,6 +67,18 @@ public class MainProgram {
 					System.out.println(listClass.getId()+" "+listClass.getClassName());
 				}
 			case 6:
+				StudentsInfomationFound studentSIF = new StudentsInfomationFound();
+				System.out.println("Please enter the student name you want to find: ");
+				Scanner ip = new Scanner(System.in);
+				String name = ip.nextLine();
+				studentSIF.setStudentName(name);
+				String dayOff = ip.nextLine();
+				studentSIF.setDayOff(dayOff);
+				for (StudentsInfomationFound listStudentIF : stDaoImpl.findStudent(studentSIF, conn)) 
+					System.out.println(listStudentIF.getStudentName()+" "+listStudentIF.getDayOff());
+				break;
+			case 7:
+				System.out.println("exit!");
 				break;
 			default:
 				System.out.println("your input number is wrong, please input again!");
@@ -74,7 +86,7 @@ public class MainProgram {
 				break;
 			}
 
-		} while (inputNumber != 6);
+		} while (inputNumber != 7);
 	}
 	private static Students inputStudent()
 	{
@@ -130,7 +142,9 @@ public class MainProgram {
 		System.out.println("2: insert data to the class table ");
 		System.out.println("3: insert data to the day_off table ");
 		System.out.println("4: insert data to the Student_class table ");
-		System.out.println("5: exit!");
+		System.out.println("5. find data of class table with class name");
+		System.out.println("6. find day off with student name or day of");
+		System.out.println("7: exit!");
 		System.out.println("-------------------------------");
 	}
 }

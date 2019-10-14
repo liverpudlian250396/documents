@@ -117,9 +117,28 @@ public class StudentsDaoImpl implements IStudentsManagementDao{
 	}
 
 	@Override
-	public List<Students> findStudent(Students student, Connection conn) {
+	public List<StudentsInfomationFound> findStudent(StudentsInfomationFound students, Connection conn) throws SQLException {
 		// TODO Auto-generated method stub
-		return null;
+		List<StudentsInfomationFound> listSIF = new ArrayList<StudentsInfomationFound>();
+		System.out.println("--------Find information of student with student name or dayoff------------");
+		//String sql = "SELECT class.id, class.class_name FROM students_management.class where "
+				//+ "CLASS_NAME LIKE ("+"'"+"%?%'"+");";
+		String sql = "SELECT student.name, dayoff.day_off FROM students_management.student, dayoff where"
+				+ " student_id = student.id "
+				+ "and (student.name like '%?%' "
+				+ "or day_off like ('%?%'));";
+		PreparedStatement pStatement = conn.prepareStatement(sql);
+		pStatement.setString(1,students.getStudentName());
+		pStatement.setString(2,students.getDayOff());
+		ResultSet resultSet = pStatement.executeQuery();
+		while(resultSet.next())
+		{
+			String name = resultSet.getString("name");
+			String dayOff = resultSet.getString("day_off");
+			StudentsInfomationFound studentIF = new StudentsInfomationFound(name,dayOff);
+			listSIF.add(studentIF);
+		}	
+		return listSIF;
 	}
 
 	@Override
@@ -142,6 +161,12 @@ public class StudentsDaoImpl implements IStudentsManagementDao{
 			listClass.add(_class);
 		}	
 		return listClass;
+	}
+
+	@Override
+	public List<StudentsInfomationFound> findStudent(Students student, Connection conn) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
